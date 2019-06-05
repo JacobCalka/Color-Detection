@@ -5,13 +5,12 @@ import cv2
 
 # little confused about the next part - argument parse and parsing the arguments
 ap = argparse.ArgumentParser()
-ap.add_argument("")
+ap.add_argument("-i", "--image", help = "path to the image")
 # Above i dont know what to type in the quotes bc it is the path to where the images are on the computer
 args = vars(ap.parse_args())
 
 # get the image in
 image = cv2.imread(args["pic"])
-
 
 #colors red bluce yellow gray
 boundaries = [
@@ -20,20 +19,23 @@ boundaries = [
   ([25, 146, 190], [62, 174, 250]),
   ([103, 86, 65], [145, 133, 128])
   
-]
-  
+] 
+ 
 # I think whats next is right looping over the boundaries from what I found learning it is correct
 for (lower, upper) in boundaries:
   # getting arrays from boundaries NumPy
   lower = np.array(lower, dtype = 
   
-  # fine the colors within the boundaries
+  # find the colors within the boundaries
   # I still dont fully comprehend the concept of this mask but i know it is useful in color detection
   
   mask =cv2.inRange(image, lower, upper)
   output = cv2.bitwise_and(image, image, mask = mask)
   # the above may be wrong I just again dont fully know if it is right
   
+	# show the images
+	cv2.imshow("images", np.hstack([image, output]))
+	cv2.waitKey(0)
 
 
 
