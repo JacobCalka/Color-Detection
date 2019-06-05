@@ -5,7 +5,7 @@ import cv2
 
 # little confused about the next part - argument parse and parsing the arguments
 ap = argparse.ArgumentParser()
-ap.add_argument("-i", "--image", help = "path to the image")
+ap.add_argument("")
 # Above i dont know what to type in the quotes bc it is the path to where the images are on the computer
 args = vars(ap.parse_args())
 
